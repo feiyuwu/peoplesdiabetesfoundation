@@ -12,12 +12,73 @@ import {
   ExternalLink,
   Bell,
   TreePine,
+  Camera,
+  Video,
+  CalendarRange,
+  Play,
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 
 const PAYPAL_LINK = 'https://www.paypal.com/us/fundraiser/charity/120798';
 const HOLIDAY_IMAGE_URL = `${process.env.PUBLIC_URL || ''}/images/christmas-background-with-space-bottom.jpg`;
+const UPCOMING_EVENTS = [
+  {
+    title: 'Belize Red Cross Wheelchair Clinic',
+    date: 'Thu Jan 15 & Fri Jan 16',
+    location: 'Belize City',
+    description:
+      'Register by phone for a customized wheelchair fitting; location and time will be shared after confirmation.',
+    phone: '203-3319',
+    details: [
+      'Clients must attend in person (wheelchairs are customized)',
+      'No house calls or transportation support available',
+      'No bedsores in the past year; previous sores must be fully healed and dry',
+      'Must be able to sit independently at a 90° angle',
+    ],
+  },
+];
+
+const GALLERY_ITEMS = [
+  {
+    title: 'Community Health Outreach',
+    subtitle: 'Blood sugar checks and care with local nurses',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8889.JPG`,
+  },
+  {
+    title: 'Family Education Circle',
+    subtitle: 'Sharing nutrition tips and prevention for Belizean families',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8890.JPG`,
+  },
+];
+
+const VIDEO_SPOTLIGHT = {
+  title: 'Community Stories Playlist',
+  description:
+    'Watch highlights from events, family stories, and clinic partnerships across Belize.',
+  image: 'https://img.youtube.com/vi/aq09vbSEGgg/maxresdefault.jpg',
+  link:
+    'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
+};
+
+const YOUTUBE_PLAYLISTS = [
+  {
+    title: 'Community Stories Playlist',
+    description: 'Event recaps, patient voices, and volunteer moments.',
+    link:
+      'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
+    thumbnail: 'https://img.youtube.com/vi/aq09vbSEGgg/hqdefault.jpg',
+  },
+  {
+    title: 'Health Education Playlist',
+    description: 'Short lessons on nutrition, movement, and prevention.',
+    link:
+      'https://www.youtube.com/watch?v=bPITHEiFWLc&list=PLQndNxM2_zkaxzF1tX7xb0bcU_n_1t5KN',
+    thumbnail: 'https://img.youtube.com/vi/bPITHEiFWLc/hqdefault.jpg',
+  },
+];
 
 const HomePage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,6 +128,12 @@ const HomePage = () => {
               Impact
             </button>
             <button
+              onClick={() => scrollToSection('gallery')}
+              className="nav-link"
+            >
+              Gallery
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
               className="nav-link"
             >
@@ -109,6 +176,12 @@ const HomePage = () => {
               className="mobile-nav-link"
             >
               Impact
+            </button>
+            <button
+              onClick={() => scrollToSection('gallery')}
+              className="mobile-nav-link"
+            >
+              Gallery
             </button>
             <button
               onClick={() => scrollToSection('contact')}
@@ -469,6 +542,161 @@ const HomePage = () => {
                 provide comprehensive support and education to help individuals
                 manage their condition and improve their quality of life.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery & Events Section */}
+      <section className="gallery-section" id="gallery">
+        <div className="section-container">
+          <div className="section-header">
+            <div className="section-pill">
+              <Camera size={16} />
+              <span>Gallery & Events</span>
+            </div>
+            <h2 className="section-title">See our community in action</h2>
+            <p className="section-subtitle">
+              Photos, videos, and upcoming events that show how your support
+              reaches families in Belize.
+            </p>
+          </div>
+          <div className="gallery-layout">
+            <div className="event-column">
+              <div className="event-column-header">
+                <h3>Upcoming gatherings</h3>
+                <p>Meet us in person, volunteer, or invite a friend to join.</p>
+              </div>
+              <div className="event-list">
+                {UPCOMING_EVENTS.map((event) => (
+                  <Card className="event-card" key={event.title}>
+                    <CardContent className="event-card-content">
+                      <div className="event-meta">
+                        <div className="event-date">
+                          <CalendarRange size={18} />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="event-location">
+                          <MapPin size={18} />
+                          <span>{event.location}</span>
+                        </div>
+                        {event.phone && (
+                          <div className="event-location">
+                            <Phone size={18} />
+                            <a href={`tel:${event.phone}`}>{event.phone}</a>
+                          </div>
+                        )}
+                      </div>
+                      <h4 className="event-title">{event.title}</h4>
+                      <p className="event-description">{event.description}</p>
+                      {event.details && (
+                        <ul className="event-bullets">
+                          {event.details.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                      <Button
+                        variant="outline"
+                        className="event-cta"
+                        onClick={() =>
+                          window.open(
+                            `mailto:fred@peoplesdiabetesfoundation.org?subject=${encodeURIComponent(
+                              event.title
+                            )}&body=${encodeURIComponent(
+                              'Hi! I would like to RSVP or volunteer for this event.'
+                            )}`,
+                            '_blank'
+                          )
+                        }
+                      >
+                        <Heart className="icon" />
+                        RSVP / Volunteer
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <p className="event-note">
+                Want to list your clinic, school, or community day? Email{' '}
+                <a href="mailto:fred@peoplesdiabetesfoundation.org">
+                  fred@peoplesdiabetesfoundation.org
+                </a>{' '}
+                with photos or video links and we will publish them here.
+              </p>
+            </div>
+            <div className="media-column">
+              <div className="gallery-grid">
+                {GALLERY_ITEMS.map((item) => (
+                  <div
+                    className="gallery-card"
+                    key={item.title}
+                    style={{
+                      backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%), url('${item.image}')`,
+                    }}
+                    aria-label={item.title}
+                  >
+                    <div className="gallery-badge">
+                      {item.type === 'Video' ? <Video size={16} /> : <Camera size={16} />}
+                      <span>{item.type}</span>
+                    </div>
+                    <div className="gallery-caption">
+                      <p className="gallery-title">{item.title}</p>
+                      <p className="gallery-subtitle">{item.subtitle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="video-highlight">
+                <div
+                  className="video-card"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.25) 0%, rgba(15,23,42,0.75) 100%), url('${VIDEO_SPOTLIGHT.image}')`,
+                  }}
+                  aria-label="Share your video story"
+                >
+                    <div className="video-card-content">
+                      <div className="video-pill">
+                        <Video size={16} />
+                        <span>Video spotlight</span>
+                      </div>
+                    <h4>{VIDEO_SPOTLIGHT.title}</h4>
+                    <p>{VIDEO_SPOTLIGHT.description}</p>
+                    <Button
+                      className="video-button"
+                      onClick={() => window.open(VIDEO_SPOTLIGHT.link, '_blank')}
+                    >
+                      <Play className="icon" />
+                      Watch playlist
+                    </Button>
+                  </div>
+                </div>
+                <div className="playlist-list">
+                  {YOUTUBE_PLAYLISTS.map((playlist) => (
+                    <Card className="playlist-card" key={playlist.link}>
+                      <CardContent className="playlist-card-content">
+                        <div className="playlist-thumb">
+                          <img src={playlist.thumbnail} alt={playlist.title} />
+                        </div>
+                        <div className="playlist-text">
+                          <p className="playlist-title">{playlist.title}</p>
+                          <p className="playlist-description">
+                            {playlist.description}
+                          </p>
+                        </div>
+                        <Button
+                          variant="outline"
+                          className="playlist-button"
+                          onClick={() => window.open(playlist.link, '_blank')}
+                        >
+                          <Play className="icon" />
+                          Watch
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
