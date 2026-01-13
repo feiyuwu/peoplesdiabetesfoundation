@@ -10,8 +10,6 @@ import {
   Phone,
   MapPin,
   ExternalLink,
-  Bell,
-  TreePine,
   Camera,
   Video,
   CalendarRange,
@@ -21,7 +19,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 
 const PAYPAL_LINK = 'https://www.paypal.com/us/fundraiser/charity/120798';
-const HOLIDAY_IMAGE_URL = `${process.env.PUBLIC_URL || ''}/images/christmas-background-with-space-bottom.jpg`;
+const COMMUNITY_IMAGE_URL = `${process.env.PUBLIC_URL || ''}/images/world_diabetes.jpg`;
 const UPCOMING_EVENTS = [
   {
     title: 'Belize Red Cross Wheelchair Clinic',
@@ -228,18 +226,19 @@ const HomePage = () => {
             <div
               className="holiday-photo"
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 100%), url('${HOLIDAY_IMAGE_URL}')`,
+                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 100%), url('${COMMUNITY_IMAGE_URL}')`,
               }}
-              aria-label="Festive holiday bells and lights"
+              aria-label="Diabetes awareness and community outreach in Belize"
             >
               <div className="holiday-overlay">
                 <div className="holiday-greeting">
-                  <Bell size={18} />
-                  <span>Wishing everyone a Happy Holidays</span>
-                  <TreePine size={18} />
+                  <Users size={18} />
+                  <span>Year-round care for Belizean families</span>
+                  <Heart size={18} />
                 </div>
                 <p className="holiday-subtext">
-                  A warm, joyful season for every family we serve in Belize.
+                  Your support funds screenings, education, and resources in the
+                  communities that need them most.
                 </p>
               </div>
             </div>
@@ -247,23 +246,23 @@ const HomePage = () => {
           <div className="holiday-text">
             <div className="holiday-pill">
               <Heart size={16} />
-              <span>Season of Giving</span>
+              <span>Community Support</span>
             </div>
-            <h3 className="holiday-title">Share a festive gift of health</h3>
+            <h3 className="holiday-title">Keep vital diabetes care going</h3>
             <p className="holiday-copy">
-              Celebrate the holidays by helping us deliver diabetes education,
-              resources, and hope. Your generosity keeps patients supported
-              through the end of the year.
+              Help us deliver diabetes education, resources, and hope to
+              Belizeans all year long. Your generosity keeps patients supported
+              when they need it most.
             </p>
             <Button
               className="holiday-cta"
               onClick={() => window.open(PAYPAL_LINK, '_blank')}
             >
               <Heart className="icon" />
-              Send a Holiday Donation
+              Support the Mission
             </Button>
             <p className="holiday-note">
-              Every holiday gift brings us closer to our goal.
+              Every gift brings us closer to our goal.
             </p>
           </div>
         </div>
