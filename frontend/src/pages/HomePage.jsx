@@ -19,7 +19,9 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 
 const PAYPAL_LINK = 'https://www.paypal.com/us/fundraiser/charity/120798';
-const COMMUNITY_IMAGE_URL = `${process.env.PUBLIC_URL || ''}/images/world_diabetes.jpg`;
+const COMMUNITY_IMAGE_URL = `${
+  process.env.PUBLIC_URL || ''
+}/images/world_diabetes.jpg`;
 const UPCOMING_EVENTS = [
   {
     title: 'Belize Red Cross Wheelchair Clinic',
@@ -57,23 +59,20 @@ const VIDEO_SPOTLIGHT = {
   description:
     'Watch highlights from events, family stories, and clinic partnerships across Belize.',
   image: 'https://img.youtube.com/vi/aq09vbSEGgg/maxresdefault.jpg',
-  link:
-    'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
+  link: 'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
 };
 
 const YOUTUBE_PLAYLISTS = [
   {
     title: 'Community Stories Playlist',
     description: 'Event recaps, patient voices, and volunteer moments.',
-    link:
-      'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
+    link: 'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
     thumbnail: 'https://img.youtube.com/vi/aq09vbSEGgg/hqdefault.jpg',
   },
   {
     title: 'Health Education Playlist',
     description: 'Short lessons on nutrition, movement, and prevention.',
-    link:
-      'https://www.youtube.com/watch?v=bPITHEiFWLc&list=PLQndNxM2_zkaxzF1tX7xb0bcU_n_1t5KN',
+    link: 'https://www.youtube.com/watch?v=bPITHEiFWLc&list=PLQndNxM2_zkaxzF1tX7xb0bcU_n_1t5KN',
     thumbnail: 'https://img.youtube.com/vi/bPITHEiFWLc/hqdefault.jpg',
   },
 ];
@@ -273,7 +272,7 @@ const HomePage = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h2 className="hero-title">
-              Help Us Combat the Diabetes Epidemic in Belize
+              Join the Fight Against Diabetes in Belize
             </h2>
             <p className="hero-subtitle">
               Belize has the highest diabetes prevalence rate in North America
@@ -636,7 +635,11 @@ const HomePage = () => {
                     aria-label={item.title}
                   >
                     <div className="gallery-badge">
-                      {item.type === 'Video' ? <Video size={16} /> : <Camera size={16} />}
+                      {item.type === 'Video' ? (
+                        <Video size={16} />
+                      ) : (
+                        <Camera size={16} />
+                      )}
                       <span>{item.type}</span>
                     </div>
                     <div className="gallery-caption">
@@ -654,16 +657,18 @@ const HomePage = () => {
                   }}
                   aria-label="Share your video story"
                 >
-                    <div className="video-card-content">
-                      <div className="video-pill">
-                        <Video size={16} />
-                        <span>Video spotlight</span>
-                      </div>
+                  <div className="video-card-content">
+                    <div className="video-pill">
+                      <Video size={16} />
+                      <span>Video spotlight</span>
+                    </div>
                     <h4>{VIDEO_SPOTLIGHT.title}</h4>
                     <p>{VIDEO_SPOTLIGHT.description}</p>
                     <Button
                       className="video-button"
-                      onClick={() => window.open(VIDEO_SPOTLIGHT.link, '_blank')}
+                      onClick={() =>
+                        window.open(VIDEO_SPOTLIGHT.link, '_blank')
+                      }
                     >
                       <Play className="icon" />
                       Watch playlist
