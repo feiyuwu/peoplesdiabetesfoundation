@@ -24,6 +24,14 @@ const COMMUNITY_IMAGE_URL = `${
 }/images/world_diabetes.jpg`;
 const UPCOMING_EVENTS = [
   {
+    title: 'Rice & Beans Fundraiser Plate',
+    date: 'Sat Feb 22 · 12–3 PM',
+    location: 'Belize City',
+    description:
+      'Enjoy a delicious, well-balanced meal while supporting people living with diabetes across Belize. Our plate of rice and beans is thoughtfully paired with stewed chicken, fresh salad, and water to support balance and choice. Join us, support the fundraiser, and help us continue this important work in our community. 💙',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8991.JPG`,
+  },
+  {
     title: 'Belize Red Cross Wheelchair Clinic',
     date: 'Thu Jan 15 & Fri Jan 16',
     location: 'Belize City',
@@ -52,6 +60,84 @@ const GALLERY_ITEMS = [
     type: 'Photos',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8890.JPG`,
   },
+  {
+    title: 'Fundraiser Plate Prep',
+    subtitle: 'Rice, beans, and stewed chicken ready to serve',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8992.JPG`,
+  },
+  {
+    title: 'Kitchen Teamwork',
+    subtitle: 'Volunteers plating balanced meals together',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8993.JPG`,
+  },
+  {
+    title: 'Fresh Salad Bar',
+    subtitle: 'Colorful veggies to pair with every plate',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8994.JPG`,
+  },
+  {
+    title: 'Serving with Heart',
+    subtitle: 'Community members receiving their meals',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8995.JPG`,
+  },
+  {
+    title: 'Joyful Volunteers',
+    subtitle: 'Smiles while supporting diabetes care in Belize',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8996.JPG`,
+  },
+  {
+    title: 'Fundraiser Crowd',
+    subtitle: 'Neighbors gathered to share food and support',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8997.JPG`,
+  },
+  {
+    title: 'Healthy Plate Options',
+    subtitle: 'Balanced portions ready for guests',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8998.JPG`,
+  },
+  {
+    title: 'Thank You Table',
+    subtitle: 'Gratitude for every donor and volunteer',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8999.JPG`,
+  },
+  {
+    title: 'Closing Time Cheers',
+    subtitle: 'Team celebrating a successful fundraiser',
+    type: 'Photos',
+    image: `${process.env.PUBLIC_URL || ''}/images/IMG_9001.JPG`,
+  },
+  {
+    title: '',
+    subtitle: '',
+    type: 'Video',
+    image: 'https://img.youtube.com/vi/DrPreO6nZwI/maxresdefault.jpg',
+  },
+  {
+    title: '',
+    subtitle: '',
+    type: 'Video',
+    image: 'https://img.youtube.com/vi/9nXiWV5GydQ/maxresdefault.jpg',
+  },
+  {
+    title: '',
+    subtitle: '',
+    type: 'Video',
+    image: 'https://img.youtube.com/vi/Rq0D_LtGalc/maxresdefault.jpg',
+  },
+  {
+    title: '',
+    subtitle: '',
+    type: 'Video',
+    image: 'https://img.youtube.com/vi/sG3LwXi4ooM/maxresdefault.jpg',
+  },
 ];
 
 const VIDEO_SPOTLIGHT = {
@@ -65,15 +151,39 @@ const VIDEO_SPOTLIGHT = {
 const YOUTUBE_PLAYLISTS = [
   {
     title: 'Community Stories Playlist',
-    description: 'Event recaps, patient voices, and volunteer moments.',
+    description: '',
     link: 'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
     thumbnail: 'https://img.youtube.com/vi/aq09vbSEGgg/hqdefault.jpg',
   },
   {
     title: 'Health Education Playlist',
-    description: 'Short lessons on nutrition, movement, and prevention.',
+    description: '',
     link: 'https://www.youtube.com/watch?v=bPITHEiFWLc&list=PLQndNxM2_zkaxzF1tX7xb0bcU_n_1t5KN',
     thumbnail: 'https://img.youtube.com/vi/bPITHEiFWLc/hqdefault.jpg',
+  },
+  {
+    title: 'Youth Voices on Diabetes',
+    description: '',
+    link: 'https://www.youtube.com/watch?v=DrPreO6nZwI',
+    thumbnail: 'https://img.youtube.com/vi/DrPreO6nZwI/hqdefault.jpg',
+  },
+  {
+    title: 'Family Story: Daily T1D Care',
+    description: '',
+    link: 'https://www.youtube.com/watch?v=9nXiWV5GydQ',
+    thumbnail: 'https://img.youtube.com/vi/9nXiWV5GydQ/hqdefault.jpg',
+  },
+  {
+    title: 'Nutrition in the Kitchen',
+    description: '',
+    link: 'https://www.youtube.com/watch?v=Rq0D_LtGalc',
+    thumbnail: 'https://img.youtube.com/vi/Rq0D_LtGalc/hqdefault.jpg',
+  },
+  {
+    title: 'Community Health Fair Highlights',
+    description: '',
+    link: 'https://www.youtube.com/watch?v=sG3LwXi4ooM',
+    thumbnail: 'https://img.youtube.com/vi/sG3LwXi4ooM/hqdefault.jpg',
   },
 ];
 
@@ -569,6 +679,15 @@ const HomePage = () => {
                 {UPCOMING_EVENTS.map((event) => (
                   <Card className="event-card" key={event.title}>
                     <CardContent className="event-card-content">
+                      {event.image && (
+                        <div
+                          className="event-image"
+                          style={{
+                            backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.2) 100%), url('${event.image}')`,
+                          }}
+                          aria-label={event.title}
+                        />
+                      )}
                       <div className="event-meta">
                         <div className="event-date">
                           <CalendarRange size={18} />
@@ -628,7 +747,7 @@ const HomePage = () => {
                 {GALLERY_ITEMS.map((item) => (
                   <div
                     className="gallery-card"
-                    key={item.title}
+                    key={item.title || item.image}
                     style={{
                       backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%), url('${item.image}')`,
                     }}
@@ -641,10 +760,6 @@ const HomePage = () => {
                         <Camera size={16} />
                       )}
                       <span>{item.type}</span>
-                    </div>
-                    <div className="gallery-caption">
-                      <p className="gallery-title">{item.title}</p>
-                      <p className="gallery-subtitle">{item.subtitle}</p>
                     </div>
                   </div>
                 ))}
@@ -681,12 +796,6 @@ const HomePage = () => {
                       <CardContent className="playlist-card-content">
                         <div className="playlist-thumb">
                           <img src={playlist.thumbnail} alt={playlist.title} />
-                        </div>
-                        <div className="playlist-text">
-                          <p className="playlist-title">{playlist.title}</p>
-                          <p className="playlist-description">
-                            {playlist.description}
-                          </p>
                         </div>
                         <Button
                           variant="outline"
