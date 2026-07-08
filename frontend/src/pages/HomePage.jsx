@@ -12,179 +12,160 @@ import {
   ExternalLink,
   Camera,
   Video,
-  CalendarRange,
   Play,
+  ArrowRight,
+  Facebook,
+  Instagram,
+  Clock3,
+  Stethoscope,
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 
 const PAYPAL_LINK = 'https://www.paypal.com/us/fundraiser/charity/120798';
-const COMMUNITY_IMAGE_URL = `${
-  process.env.PUBLIC_URL || ''
-}/images/world_diabetes.jpg`;
-const UPCOMING_EVENTS = [
+const FACEBOOK_LINK = 'https://www.facebook.com/peoplesdiabetes';
+const INSTAGRAM_LINK = 'https://www.instagram.com/peoples_diabetes_foundation/';
+const WEBSITE_LINK = 'https://www.peoplesdiabetesfoundation.org/';
+const EMAIL = 'fred@peoplesdiabetesfoundation.org';
+const PHONE = '323-304-2861';
+const ADDRESS = '1725 Ocean Ave Unit 226, Santa Monica, CA 90401';
+const LOGO_URL =
+  'https://customer-assets.emergentagent.com/job_fbeb7c05-e739-4d3b-84da-a66045d0dc5c/artifacts/1qk0eawd_IMG_3029.JPG';
+const COMMUNITY_IMAGE_URL = `${process.env.PUBLIC_URL || ''}/images/world_diabetes.jpg`;
+
+const FOCUS_AREAS = [
   {
-    title: 'Rice & Beans Fundraiser Plate',
-    date: 'Sat Feb 22 · 12–3 PM',
-    location: 'Belize City',
-    description:
-      'Enjoy a delicious, well-balanced meal while supporting people living with diabetes across Belize. Our plate of rice and beans is thoughtfully paired with stewed chicken, fresh salad, and water to support balance and choice. Join us, support the fundraiser, and help us continue this important work in our community. 💙',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8991.JPG`,
+    icon: BookOpen,
+    title: 'Education that feels usable',
+    text: 'The foundation centers awareness, prevention, and practical diabetes education so families can better understand daily care decisions.',
   },
   {
-    title: 'Belize Red Cross Wheelchair Clinic',
-    date: 'Thu Jan 15 & Fri Jan 16',
-    location: 'Belize City',
-    description:
-      'Register by phone for a customized wheelchair fitting; location and time will be shared after confirmation.',
-    phone: '203-3319',
-    details: [
-      'Clients must attend in person (wheelchairs are customized)',
-      'No house calls or transportation support available',
-      'No bedsores in the past year; previous sores must be fully healed and dry',
-      'Must be able to sit independently at a 90° angle',
+    icon: Users,
+    title: 'Community-facing outreach',
+    text: 'The work is framed around public understanding, family support, and outreach that can reach people before complications worsen.',
+  },
+  {
+    icon: Stethoscope,
+    title: 'Support tied to real health concerns',
+    text: 'The foundation shares guidance on food choices, type 1 diabetes education, sleep, stress, and glucose management rather than relying on one-off campaign messaging.',
+  },
+];
+
+const RESOURCE_PILLARS = [
+  {
+    number: '01',
+    title: 'Awareness and prevention',
+    text: 'Simple, clear information that helps people recognize diabetes risks, symptoms, and the importance of early action.',
+    bullets: [
+      'Community education',
+      'Prevention messaging',
+      'Public-facing awareness',
+      'Family-friendly explanations',
     ],
+  },
+  {
+    number: '02',
+    title: 'Patient and family learning',
+    text: 'Materials and shared resources designed to make diabetes easier to understand for patients, caregivers, teachers, and families.',
+    bullets: [
+      'Everyday self-care guidance',
+      'Nutrition and food education',
+      'Type 1 and type 2 learning resources',
+      'School and family support',
+    ],
+  },
+  {
+    number: '03',
+    title: 'Digital outreach and community connection',
+    text: 'Facebook and social channels help the foundation share health education, encourage families, and stay connected with supporters.',
+    bullets: [
+      'Educational posts',
+      'Community engagement',
+      'Shareable health content',
+      'Supporter communication',
+    ],
+  },
+];
+
+const FACEBOOK_UPDATES = [
+  {
+    title: 'Healthy relationships with food',
+    label: 'Featured topic',
+    text: 'A practical reframing of the relationship with food, built around education instead of guilt or fear.',
+  },
+  {
+    title: 'Understanding type 1 diabetes at school and at home',
+    label: 'Family education',
+    text: 'Learning content for teachers, students, and families that helps explain type 1 diabetes in a clear, approachable way.',
+  },
+  {
+    title: 'How sleep and stress affect glucose levels',
+    label: 'Health education',
+    text: 'A focus on how sleep, stress, and daily habits affect glucose regulation and long-term diabetes management.',
+  },
+  {
+    title: 'Encouragement for families and supporters',
+    label: 'Community support',
+    text: 'Encouraging, human-centered messages that keep the organization connected to families and supporters.',
   },
 ];
 
 const GALLERY_ITEMS = [
   {
-    title: 'Community Health Outreach',
-    subtitle: 'Blood sugar checks and care with local nurses',
-    type: 'Photos',
+    title: 'Community outreach',
+    subtitle: 'Local education and support in Belize',
+    type: 'Photo',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8889.JPG`,
   },
   {
-    title: 'Family Education Circle',
-    subtitle: 'Sharing nutrition tips and prevention for Belizean families',
-    type: 'Photos',
+    title: 'Family learning',
+    subtitle: 'Practical conversations around diabetes care',
+    type: 'Photo',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8890.JPG`,
   },
   {
-    title: 'Fundraiser Plate Prep',
-    subtitle: 'Rice, beans, and stewed chicken ready to serve',
-    type: 'Photos',
+    title: 'Volunteer preparation',
+    subtitle: 'Volunteers helping organize community support',
+    type: 'Photo',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8992.JPG`,
   },
   {
-    title: 'Kitchen Teamwork',
-    subtitle: 'Volunteers plating balanced meals together',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8993.JPG`,
-  },
-  {
-    title: 'Fresh Salad Bar',
-    subtitle: 'Colorful veggies to pair with every plate',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8994.JPG`,
-  },
-  {
-    title: 'Serving with Heart',
-    subtitle: 'Community members receiving their meals',
-    type: 'Photos',
+    title: 'Community meals',
+    subtitle: 'Shared meals that bring people together',
+    type: 'Photo',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8995.JPG`,
   },
   {
-    title: 'Joyful Volunteers',
-    subtitle: 'Smiles while supporting diabetes care in Belize',
-    type: 'Photos',
+    title: 'Volunteer support',
+    subtitle: 'People showing up with time, care, and energy',
+    type: 'Photo',
     image: `${process.env.PUBLIC_URL || ''}/images/IMG_8996.JPG`,
   },
   {
-    title: 'Fundraiser Crowd',
-    subtitle: 'Neighbors gathered to share food and support',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8997.JPG`,
-  },
-  {
-    title: 'Healthy Plate Options',
-    subtitle: 'Balanced portions ready for guests',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8998.JPG`,
-  },
-  {
-    title: 'Thank You Table',
-    subtitle: 'Gratitude for every donor and volunteer',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_8999.JPG`,
-  },
-  {
-    title: 'Closing Time Cheers',
-    subtitle: 'Team celebrating a successful fundraiser',
-    type: 'Photos',
-    image: `${process.env.PUBLIC_URL || ''}/images/IMG_9001.JPG`,
-  },
-  {
-    title: '',
-    subtitle: '',
-    type: 'Video',
-    image: 'https://img.youtube.com/vi/DrPreO6nZwI/maxresdefault.jpg',
-  },
-  {
-    title: '',
-    subtitle: '',
-    type: 'Video',
-    image: 'https://img.youtube.com/vi/9nXiWV5GydQ/maxresdefault.jpg',
-  },
-  {
-    title: '',
-    subtitle: '',
-    type: 'Video',
-    image: 'https://img.youtube.com/vi/Rq0D_LtGalc/maxresdefault.jpg',
-  },
-  {
-    title: '',
-    subtitle: '',
-    type: 'Video',
-    image: 'https://img.youtube.com/vi/sG3LwXi4ooM/maxresdefault.jpg',
+    title: 'Belize awareness day',
+    subtitle: 'Community members standing together for diabetes awareness',
+    type: 'Photo',
+    image: COMMUNITY_IMAGE_URL,
   },
 ];
 
-const VIDEO_SPOTLIGHT = {
-  title: 'Community Stories Playlist',
-  description:
-    'Watch highlights from events, family stories, and clinic partnerships across Belize.',
-  image: 'https://img.youtube.com/vi/aq09vbSEGgg/maxresdefault.jpg',
-  link: 'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
-};
-
-const YOUTUBE_PLAYLISTS = [
+const VIDEO_LINKS = [
   {
     title: 'Community Stories Playlist',
-    description: '',
     link: 'https://www.youtube.com/watch?v=aq09vbSEGgg&list=PLQndNxM2_zkYzyQEH_Nv_U3aRuEZNCmY8',
     thumbnail: 'https://img.youtube.com/vi/aq09vbSEGgg/hqdefault.jpg',
   },
   {
     title: 'Health Education Playlist',
-    description: '',
     link: 'https://www.youtube.com/watch?v=bPITHEiFWLc&list=PLQndNxM2_zkaxzF1tX7xb0bcU_n_1t5KN',
     thumbnail: 'https://img.youtube.com/vi/bPITHEiFWLc/hqdefault.jpg',
   },
-  {
-    title: 'Youth Voices on Diabetes',
-    description: '',
-    link: 'https://www.youtube.com/watch?v=DrPreO6nZwI',
-    thumbnail: 'https://img.youtube.com/vi/DrPreO6nZwI/hqdefault.jpg',
-  },
-  {
-    title: 'Family Story: Daily T1D Care',
-    description: '',
-    link: 'https://www.youtube.com/watch?v=9nXiWV5GydQ',
-    thumbnail: 'https://img.youtube.com/vi/9nXiWV5GydQ/hqdefault.jpg',
-  },
-  {
-    title: 'Nutrition in the Kitchen',
-    description: '',
-    link: 'https://www.youtube.com/watch?v=Rq0D_LtGalc',
-    thumbnail: 'https://img.youtube.com/vi/Rq0D_LtGalc/hqdefault.jpg',
-  },
-  {
-    title: 'Community Health Fair Highlights',
-    description: '',
-    link: 'https://www.youtube.com/watch?v=sG3LwXi4ooM',
-    thumbnail: 'https://img.youtube.com/vi/sG3LwXi4ooM/hqdefault.jpg',
-  },
+];
+
+const MEDIA_HIGHLIGHTS = [
+  'Community education in action',
+  'Family-centered support',
+  'Volunteer energy and participation',
 ];
 
 const HomePage = () => {
@@ -193,730 +174,504 @@ const HomePage = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setMobileMenuOpen(false);
     }
   };
 
   return (
     <div className="homepage">
-      {/* Header */}
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-section">
+      <header className="site-header">
+        <div className="shell header-row">
+          <button
+            className="brand"
+            onClick={() => scrollToSection('top')}
+            type="button"
+          >
             <img
-              src="https://customer-assets.emergentagent.com/job_fbeb7c05-e739-4d3b-84da-a66045d0dc5c/artifacts/1qk0eawd_IMG_3029.JPG"
-              alt="People's Diabetes Foundation Logo"
-              className="logo-img"
+              src={LOGO_URL}
+              alt="The People's Diabetes Foundation logo"
+              className="brand-logo"
             />
-            <div className="logo-text">
-              <h1>The People's Diabetes Foundation</h1>
-              <p>Fighting Diabetes in Belize</p>
-            </div>
-          </div>
+            <span className="brand-copy">
+              <span className="brand-name">The People&apos;s Diabetes Foundation</span>
+              <span className="brand-tag">Awareness, prevention, and diabetes education</span>
+            </span>
+          </button>
 
-          <nav className="desktop-nav">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="nav-link"
-            >
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            <button onClick={() => scrollToSection('about')} className="nav-link">
               About
             </button>
-            <button
-              onClick={() => scrollToSection('programs')}
-              className="nav-link"
-            >
-              Programs
+            <button onClick={() => scrollToSection('resources')} className="nav-link">
+              Resources
             </button>
-            <button
-              onClick={() => scrollToSection('impact')}
-              className="nav-link"
-            >
-              Impact
+            <button onClick={() => scrollToSection('facebook')} className="nav-link">
+              Facebook
             </button>
-            <button
-              onClick={() => scrollToSection('gallery')}
-              className="nav-link"
-            >
-              Gallery
+            <button onClick={() => scrollToSection('media')} className="nav-link">
+              Media
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="nav-link"
-            >
+            <button onClick={() => scrollToSection('contact')} className="nav-link">
               Contact
             </button>
             <Button
-              className="donate-btn-header"
-              onClick={() => window.open(PAYPAL_LINK, '_blank')}
+              className="header-cta"
+              onClick={() => window.open(PAYPAL_LINK, '_blank', 'noopener,noreferrer')}
             >
               <Heart className="icon" />
-              Donate Now
+              Donate
             </Button>
           </nav>
 
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="mobile-menu">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="mobile-nav-link"
-            >
+            <button onClick={() => scrollToSection('about')} className="mobile-nav-link">
               About
             </button>
-            <button
-              onClick={() => scrollToSection('programs')}
-              className="mobile-nav-link"
-            >
-              Programs
+            <button onClick={() => scrollToSection('resources')} className="mobile-nav-link">
+              Resources
             </button>
-            <button
-              onClick={() => scrollToSection('impact')}
-              className="mobile-nav-link"
-            >
-              Impact
+            <button onClick={() => scrollToSection('facebook')} className="mobile-nav-link">
+              Facebook
             </button>
-            <button
-              onClick={() => scrollToSection('gallery')}
-              className="mobile-nav-link"
-            >
-              Gallery
+            <button onClick={() => scrollToSection('media')} className="mobile-nav-link">
+              Media
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="mobile-nav-link"
-            >
+            <button onClick={() => scrollToSection('contact')} className="mobile-nav-link">
               Contact
             </button>
             <Button
-              className="donate-btn-mobile"
-              onClick={() => window.open(PAYPAL_LINK, '_blank')}
+              className="mobile-cta"
+              onClick={() => window.open(PAYPAL_LINK, '_blank', 'noopener,noreferrer')}
             >
               <Heart className="icon" />
-              Donate Now
+              Donate now
             </Button>
           </div>
         )}
       </header>
 
-      {/* Tax Deadline Banner */}
-      <section className="tax-banner">
-        <div className="tax-banner-content">
-          <div className="tax-banner-text">
-            <p className="tax-banner-main">
-              Maximize your charitable impact before the year-end tax deadline.
-            </p>
-            <p className="tax-banner-sub">
-              Make your generosity go further with a deductible donation.
-            </p>
+      <main id="top">
+        <section className="hero-section">
+          <div className="hero-backdrop">
+            <img src={COMMUNITY_IMAGE_URL} alt="Community diabetes outreach in Belize" />
           </div>
-          <Button
-            className="tax-banner-btn"
-            onClick={() => window.open(PAYPAL_LINK, '_blank')}
-          >
-            <Heart className="icon" />
-            Donate Today
-          </Button>
-        </div>
-      </section>
-
-      {/* Holiday Donation Feature */}
-      <section className="holiday-donation">
-        <div className="section-container holiday-container">
-          <div className="holiday-photo-row">
-            <div
-              className="holiday-photo"
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 100%), url('${COMMUNITY_IMAGE_URL}')`,
-              }}
-              aria-label="Diabetes awareness and community outreach in Belize"
-            >
-              <div className="holiday-overlay">
-                <div className="holiday-greeting">
-                  <Users size={18} />
-                  <span>Year-round care for Belizean families</span>
-                  <Heart size={18} />
-                </div>
-                <p className="holiday-subtext">
-                  Your support funds screenings, education, and resources in the
-                  communities that need them most.
-                </p>
+          <div className="hero-scrim" />
+          <div className="shell hero-layout">
+            <div className="hero-copy">
+              <div className="eyebrow">
+                <Facebook size={14} />
+                <span>Community education and support</span>
               </div>
-            </div>
-          </div>
-          <div className="holiday-text">
-            <div className="holiday-pill">
-              <Heart size={16} />
-              <span>Community Support</span>
-            </div>
-            <h3 className="holiday-title">Keep vital diabetes care going</h3>
-            <p className="holiday-copy">
-              Help us deliver diabetes education, resources, and hope to
-              Belizeans all year long. Your generosity keeps patients supported
-              when they need it most.
-            </p>
-            <Button
-              className="holiday-cta"
-              onClick={() => window.open(PAYPAL_LINK, '_blank')}
-            >
-              <Heart className="icon" />
-              Support the Mission
-            </Button>
-            <p className="holiday-note">
-              Every gift brings us closer to our goal.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h2 className="hero-title">
-              Join the Fight Against Diabetes in Belize
-            </h2>
-            <p className="hero-subtitle">
-              Belize has the highest diabetes prevalence rate in North America
-              and the Caribbean. Over 31,500 Belizeans live with diabetes.
-              Together, we can change this.
-            </p>
-            <div className="hero-buttons">
-              <Button
-                className="primary-cta"
-                onClick={() => window.open(PAYPAL_LINK, '_blank')}
-              >
-                <Heart className="icon" />
-                Donate Now
-              </Button>
-              <Button
-                variant="outline"
-                className="secondary-cta"
-                onClick={() => scrollToSection('about')}
-              >
-                Learn More
-              </Button>
-            </div>
-            <div className="hero-stats">
-              <div className="stat-item">
-                <div className="stat-number">31,500+</div>
-                <div className="stat-label">Belizeans with Diabetes</div>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <div className="stat-number">$25,000</div>
-                <div className="stat-label">Campaign Goal</div>
-              </div>
-            </div>
-          </div>
-          <div className="hero-image">
-            <img
-              src="https://customer-assets.emergentagent.com/job_fbeb7c05-e739-4d3b-84da-a66045d0dc5c/artifacts/1qk0eawd_IMG_3029.JPG"
-              alt="People's Diabetes Foundation"
-              className="hero-logo"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Crisis Section */}
-      <section className="crisis-section" id="about">
-        <div className="section-container">
-          <div className="section-header">
-            <h2 className="section-title">The Crisis We Face</h2>
-            <p className="section-subtitle">
-              Diabetes is a growing epidemic in Belize, impacting thousands of
-              lives and placing a significant burden on families and the
-              healthcare system.
-            </p>
-          </div>
-          <div className="crisis-grid">
-            <Card className="crisis-card">
-              <CardContent className="card-content">
-                <div className="card-icon-wrapper crisis-icon">
-                  <Target size={32} />
-                </div>
-                <h3 className="card-title">Highest Prevalence</h3>
-                <p className="card-text">
-                  Belize has the highest diabetes prevalence rate in North
-                  America and the Caribbean, with numbers projected to increase
-                  dramatically.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="crisis-card">
-              <CardContent className="card-content">
-                <div className="card-icon-wrapper crisis-icon">
-                  <Users size={32} />
-                </div>
-                <h3 className="card-title">Limited Access</h3>
-                <p className="card-text">
-                  Limited access to education and resources leaves many
-                  struggling to manage their condition, leading to devastating
-                  health complications.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="crisis-card">
-              <CardContent className="card-content">
-                <div className="card-icon-wrapper crisis-icon">
-                  <Heart size={32} />
-                </div>
-                <h3 className="card-title">Community Impact</h3>
-                <p className="card-text">
-                  The Corozal District faces a disproportionately high incidence
-                  of diabetes, affecting families and communities across Belize.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="solution-section">
-        <div className="section-container">
-          <div className="solution-content">
-            <div className="solution-text">
-              <h2 className="section-title">Our Solution</h2>
-              <p className="solution-description">
-                Founded by <strong>Judith Mendez</strong>, a registered nurse
-                living with Type 2 diabetes, The People's Diabetes Foundation is
-                dedicated to providing enhanced diabetes education, awareness,
-                and support to the people of Belize.
+              <h1 className="hero-title">
+                Helping people understand diabetes through education, prevention, and community support.
+              </h1>
+              <p className="hero-text">
+                The People&apos;s Diabetes Foundation is a nonprofit focused on awareness,
+                prevention, and education in understanding diabetes. Through public outreach,
+                family-centered learning, and community engagement, the foundation works to make
+                diabetes information more practical, approachable, and useful.
               </p>
-              <p className="solution-description">
-                Our vision is to become an international model for diabetes
-                education, prevention, and control in rural communities.
-              </p>
-              <div className="solution-highlight">
-                <div className="highlight-content">
-                  <BookOpen size={28} className="highlight-icon" />
-                  <div>
-                    <h4 className="highlight-title">Our Mission</h4>
-                    <p className="highlight-text">
-                      Empowering individuals with knowledge and resources to
-                      effectively manage diabetes and improve long-term health
-                      outcomes.
-                    </p>
-                  </div>
-                </div>
+              <div className="hero-actions">
+                <Button
+                  className="primary-cta"
+                  onClick={() => window.open(FACEBOOK_LINK, '_blank', 'noopener,noreferrer')}
+                >
+                  <Facebook className="icon" />
+                  Follow on Facebook
+                </Button>
+                <Button
+                  variant="outline"
+                  className="secondary-cta"
+                  onClick={() => scrollToSection('facebook')}
+                >
+                  Explore topics
+                  <ArrowRight className="icon" />
+                </Button>
               </div>
             </div>
-            <div className="solution-image">
-              <div className="image-card">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_fbeb7c05-e739-4d3b-84da-a66045d0dc5c/artifacts/1qk0eawd_IMG_3029.JPG"
-                  alt="Our Foundation"
-                  className="solution-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Programs Section */}
-      <section className="programs-section" id="programs">
-        <div className="section-container">
-          <div className="section-header">
-            <h2 className="section-title">Our Pilot Program</h2>
-            <p className="section-subtitle">
-              A multi-pronged approach to diabetes education and support
-            </p>
-          </div>
-          <div className="programs-grid">
-            <Card className="program-card">
-              <CardContent className="program-content">
-                <div className="program-number">01</div>
-                <h3 className="program-title">Community Awareness</h3>
-                <p className="program-text">
-                  Monthly educational activities, distribution of materials,
-                  "healthy community" events, and partnerships with local NGOs
-                  and media to raise awareness about diabetes.
-                </p>
-                <ul className="program-list">
-                  <li>Educational workshops</li>
-                  <li>Community health events</li>
-                  <li>Media partnerships</li>
-                  <li>Information campaigns</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="program-card">
-              <CardContent className="program-content">
-                <div className="program-number">02</div>
-                <h3 className="program-title">Support for Newly Diagnosed</h3>
-                <p className="program-text">
-                  Collaboration with healthcare providers to offer comprehensive
-                  support to newly diagnosed individuals, including education on
-                  self-care and nutrition.
-                </p>
-                <ul className="program-list">
-                  <li>Self-care education</li>
-                  <li>Nutrition guidance</li>
-                  <li>Medication management</li>
-                  <li>Access to resources</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="program-card">
-              <CardContent className="program-content">
-                <div className="program-number">03</div>
-                <h3 className="program-title">Long-Term Impact</h3>
-                <p className="program-text">
-                  Building sustainable programs by training healthcare
-                  educators, developing educational materials, and working
-                  towards recognized non-profit status.
-                </p>
-                <ul className="program-list">
-                  <li>Healthcare educator training</li>
-                  <li>Educational material development</li>
-                  <li>Program sustainability</li>
-                  <li>Community partnerships</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact Section */}
-      <section className="impact-section" id="impact">
-        <div className="section-container">
-          <div className="impact-content">
-            <h2 className="section-title">Your Impact</h2>
-            <p className="impact-intro">
-              A generous donation will be instrumental in supporting our pilot
-              program and making a tangible difference in the lives of
-              Belizeans.
-            </p>
-            <div className="impact-grid">
-              <div className="impact-item">
-                <div className="impact-icon">
-                  <BookOpen size={28} />
+            <div className="hero-panel">
+              <div className="hero-stat-grid">
+                <div className="hero-stat">
+                  <span className="hero-stat-value">Diabetes awareness</span>
+                  <span className="hero-stat-label">
+                    Public education that helps people recognize risk, symptoms, and the value of early care.
+                  </span>
                 </div>
-                <h4 className="impact-title">Educational Materials</h4>
-                <p className="impact-text">
-                  Empowering individuals with the knowledge they need to manage
-                  their diabetes effectively.
-                </p>
-              </div>
-              <div className="impact-item">
-                <div className="impact-icon">
-                  <Users size={28} />
+                <div className="hero-stat">
+                  <span className="hero-stat-value">Family education</span>
+                  <span className="hero-stat-label">
+                    Practical learning for families, caregivers, teachers, and community members.
+                  </span>
                 </div>
-                <h4 className="impact-title">Community Outreach</h4>
-                <p className="impact-text">
-                  Raising awareness and promoting healthy lifestyles through
-                  community events.
-                </p>
-              </div>
-              <div className="impact-item">
-                <div className="impact-icon">
-                  <Heart size={28} />
+                <div className="hero-stat">
+                  <span className="hero-stat-value">Community outreach</span>
+                  <span className="hero-stat-label">
+                    Shared resources, encouragement, and public-facing support that keep the mission visible.
+                  </span>
                 </div>
-                <h4 className="impact-title">Patient Support</h4>
-                <p className="impact-text">
-                  Providing critical resources and guidance for newly diagnosed
-                  patients.
-                </p>
               </div>
-              <div className="impact-item">
-                <div className="impact-icon">
-                  <Target size={28} />
-                </div>
-                <h4 className="impact-title">Program Development</h4>
-                <p className="impact-text">
-                  Ensuring long-term sustainability and effectiveness of our
-                  efforts.
-                </p>
-              </div>
-            </div>
-            <div className="impact-goal">
-              <h3 className="goal-title">
-                Our Goal: Support 120 Newly Diagnosed Patients
-              </h3>
-              <p className="goal-text">
-                By partnering with local hospitals and physicians, we will
-                provide comprehensive support and education to help individuals
-                manage their condition and improve their quality of life.
+              <div className="hero-panel-divider" />
+              <p className="hero-panel-note">
+                The foundation brings education, encouragement, and outreach together so diabetes
+                information reaches people in ways that are easier to use in daily life.
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Gallery & Events Section */}
-      <section className="gallery-section" id="gallery">
-        <div className="section-container">
-          <div className="section-header">
-            <div className="section-pill">
-              <Camera size={16} />
-              <span>Gallery & Events</span>
-            </div>
-            <h2 className="section-title">See our community in action</h2>
-            <p className="section-subtitle">
-              Photos, videos, and upcoming events that show how your support
-              reaches families in Belize.
-            </p>
-          </div>
-          <div className="gallery-layout">
-            <div className="event-column">
-              <div className="event-column-header">
-                <h3>Upcoming gatherings</h3>
-                <p>Meet us in person, volunteer, or invite a friend to join.</p>
+        <section className="section section-surface" id="about">
+          <div className="shell">
+            <div className="section-intro">
+              <div>
+                <p className="section-kicker">About</p>
+                <h2 className="section-title">Building understanding, confidence, and support around diabetes care.</h2>
               </div>
-              <div className="event-list">
-                {UPCOMING_EVENTS.map((event) => (
-                  <Card className="event-card" key={event.title}>
-                    <CardContent className="event-card-content">
-                      {event.image && (
-                        <div
-                          className="event-image"
-                          style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.2) 100%), url('${event.image}')`,
-                          }}
-                          aria-label={event.title}
-                        />
-                      )}
-                      <div className="event-meta">
-                        <div className="event-date">
-                          <CalendarRange size={18} />
-                          <span>{event.date}</span>
-                        </div>
-                        <div className="event-location">
-                          <MapPin size={18} />
-                          <span>{event.location}</span>
-                        </div>
-                        {event.phone && (
-                          <div className="event-location">
-                            <Phone size={18} />
-                            <a href={`tel:${event.phone}`}>{event.phone}</a>
-                          </div>
-                        )}
+              <p className="section-lead">
+                The People&apos;s Diabetes Foundation is committed to awareness, prevention, and
+                education in understanding diabetes. Its work supports people, families, and
+                communities with clearer information and more compassionate guidance.
+              </p>
+            </div>
+
+            <div className="priority-grid">
+              {FOCUS_AREAS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Card className="info-card" key={item.title}>
+                    <CardContent className="info-card-content">
+                      <div className="info-icon">
+                        <Icon size={24} />
                       </div>
-                      <h4 className="event-title">{event.title}</h4>
-                      <p className="event-description">{event.description}</p>
-                      {event.details && (
-                        <ul className="event-bullets">
-                          {event.details.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      )}
-                      <Button
-                        variant="outline"
-                        className="event-cta"
-                        onClick={() =>
-                          window.open(
-                            `mailto:fred@peoplesdiabetesfoundation.org?subject=${encodeURIComponent(
-                              event.title
-                            )}&body=${encodeURIComponent(
-                              'Hi! I would like to RSVP or volunteer for this event.'
-                            )}`,
-                            '_blank'
-                          )
-                        }
-                      >
-                        <Heart className="icon" />
-                        RSVP / Volunteer
-                      </Button>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="resources">
+          <div className="shell">
+            <div className="section-intro">
+              <div>
+                <p className="section-kicker">Resources</p>
+                <h2 className="section-title">Programs and resources that support everyday understanding.</h2>
+              </div>
+              <p className="section-lead">
+                The foundation&apos;s work combines awareness, prevention, education, and outreach so
+                that diabetes support reaches people in practical and accessible ways.
+              </p>
+            </div>
+
+            <div className="program-grid">
+              {RESOURCE_PILLARS.map((program) => (
+                <Card className="program-card" key={program.number}>
+                  <CardContent className="program-card-content">
+                    <div className="program-number">{program.number}</div>
+                    <h3>{program.title}</h3>
+                    <p>{program.text}</p>
+                    <ul className="program-list">
+                      {program.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-surface" id="facebook">
+          <div className="shell">
+            <div className="section-intro">
+              <div>
+                <p className="section-kicker">Health Topics</p>
+                <h2 className="section-title">Practical guidance the foundation shares with its community.</h2>
+              </div>
+              <p className="section-lead">
+                The foundation shares practical themes that matter to everyday diabetes care,
+                including food and nutrition, type 1 diabetes learning, sleep and stress, and
+                encouragement for families and supporters.
+              </p>
+            </div>
+
+            <div className="updates-layout">
+              <div className="update-cards">
+                {FACEBOOK_UPDATES.map((update) => (
+                  <Card className="update-card" key={update.title}>
+                    <CardContent className="update-card-content">
+                      <div className="update-label">{update.label}</div>
+                      <h3>{update.title}</h3>
+                      <p>{update.text}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
-              <p className="event-note">
-                Want to list your clinic, school, or community day? Email{' '}
-                <a href="mailto:fred@peoplesdiabetesfoundation.org">
-                  fred@peoplesdiabetesfoundation.org
-                </a>{' '}
-                with photos or video links and we will publish them here.
-              </p>
-            </div>
-            <div className="media-column">
-              <div className="gallery-grid">
-                {GALLERY_ITEMS.map((item) => (
-                  <div
-                    className="gallery-card"
-                    key={item.title || item.image}
-                    style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%), url('${item.image}')`,
-                    }}
-                    aria-label={item.title}
-                  >
-                    <div className="gallery-badge">
-                      {item.type === 'Video' ? (
-                        <Video size={16} />
-                      ) : (
-                        <Camera size={16} />
-                      )}
-                      <span>{item.type}</span>
-                    </div>
+
+              <div className="updates-sidebar">
+                <div className="social-panel">
+                  <div className="social-panel-row">
+                    <Facebook size={18} />
+                    <span>People&apos;s Diabetes Foundation</span>
                   </div>
-                ))}
-              </div>
-              <div className="video-highlight">
-                <div
-                  className="video-card"
-                  style={{
-                    backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.25) 0%, rgba(15,23,42,0.75) 100%), url('${VIDEO_SPOTLIGHT.image}')`,
-                  }}
-                  aria-label="Share your video story"
-                >
-                  <div className="video-card-content">
-                    <div className="video-pill">
-                      <Video size={16} />
-                      <span>Video spotlight</span>
-                    </div>
-                    <h4>{VIDEO_SPOTLIGHT.title}</h4>
-                    <p>{VIDEO_SPOTLIGHT.description}</p>
-                    <Button
-                      className="video-button"
-                      onClick={() =>
-                        window.open(VIDEO_SPOTLIGHT.link, '_blank')
-                      }
-                    >
-                      <Play className="icon" />
-                      Watch playlist
-                    </Button>
+                  <div className="social-panel-row">
+                    <Clock3 size={18} />
+                    <span>Education, outreach, and community connection</span>
+                  </div>
+                  <div className="social-panel-row">
+                    <Users size={18} />
+                    <span>Follow the foundation for health education and updates</span>
                   </div>
                 </div>
-                <div className="playlist-list">
-                  {YOUTUBE_PLAYLISTS.map((playlist) => (
-                    <Card className="playlist-card" key={playlist.link}>
-                      <CardContent className="playlist-card-content">
-                        <div className="playlist-thumb">
-                          <img src={playlist.thumbnail} alt={playlist.title} />
-                        </div>
-                        <Button
-                          variant="outline"
-                          className="playlist-button"
-                          onClick={() => window.open(playlist.link, '_blank')}
-                        >
-                          <Play className="icon" />
-                          Watch
-                        </Button>
-                      </CardContent>
-                    </Card>
+
+                <div className="social-actions">
+                  <Button
+                    className="primary-cta sidebar-cta"
+                    onClick={() => window.open(FACEBOOK_LINK, '_blank', 'noopener,noreferrer')}
+                  >
+                    <Facebook className="icon" />
+                    Open Facebook page
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="social-outline"
+                    onClick={() => window.open(INSTAGRAM_LINK, '_blank', 'noopener,noreferrer')}
+                  >
+                    <Instagram className="icon" />
+                    Open Instagram
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="media">
+          <div className="shell">
+            <div className="section-intro">
+              <div>
+                <p className="section-kicker">Media</p>
+                <h2 className="section-title">Photos and stories from the foundation&apos;s community work.</h2>
+              </div>
+              <p className="section-lead">
+                These photos and videos highlight outreach, education, volunteer support, and
+                the people at the center of the foundation&apos;s mission.
+              </p>
+            </div>
+
+            <div className="media-layout">
+              <div className="media-story">
+                <div
+                  className="media-spotlight"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(8, 21, 28, 0.12), rgba(8, 21, 28, 0.7)), url('${GALLERY_ITEMS[5].image}')`,
+                  }}
+                >
+                  <div className="media-spotlight-copy">
+                    <div className="gallery-type">
+                      <Camera size={14} />
+                      <span>Community story</span>
+                    </div>
+                    <h3>Neighbors, families, and volunteers coming together around diabetes awareness.</h3>
+                    <p>
+                      The foundation&apos;s work is rooted in shared learning, public outreach, and
+                      community participation that helps people feel seen, informed, and supported.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="media-highlight-strip">
+                  {MEDIA_HIGHLIGHTS.map((item) => (
+                    <div className="media-highlight" key={item}>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="gallery-grid">
+                  {GALLERY_ITEMS.slice(0, 5).map((item) => (
+                    <div
+                      className="gallery-card"
+                      key={item.image}
+                      style={{
+                        backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.62)), url('${item.image}')`,
+                      }}
+                    >
+                      <div className="gallery-type">
+                        <Camera size={14} />
+                        <span>{item.type}</span>
+                      </div>
+                      <div className="gallery-copy">
+                        <h3>{item.title}</h3>
+                        <p>{item.subtitle}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
+
+              <div className="playlist-column media-actions-column">
+                <div className="media-action-card">
+                  <div className="media-action-copy">
+                    <div className="gallery-type">
+                      <Video size={14} />
+                      <span>Watch and connect</span>
+                    </div>
+                    <h3>Explore videos, stories, and community updates.</h3>
+                    <p>
+                      Video and social channels offer another way to learn more about diabetes
+                      education, outreach, and the work the foundation is sharing with the community.
+                    </p>
+                  </div>
+                  <div className="media-action-buttons">
+                    <Button
+                      className="primary-cta"
+                      onClick={() => window.open(VIDEO_LINKS[0].link, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Play className="icon" />
+                      Watch stories
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="social-outline"
+                      onClick={() => window.open(FACEBOOK_LINK, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Facebook className="icon" />
+                      Visit Facebook
+                    </Button>
+                  </div>
+                </div>
+
+                {VIDEO_LINKS.map((video) => (
+                  <div className="playlist-item" key={video.link}>
+                    <Card className="playlist-card">
+                      <CardContent className="playlist-card-content">
+                        <img src={video.thumbnail} alt={video.title} className="playlist-thumb" />
+                        <div className="playlist-copy">
+                          <h3>{video.title}</h3>
+                          <Button
+                            variant="outline"
+                            className="playlist-button"
+                            onClick={() => window.open(video.link, '_blank', 'noopener,noreferrer')}
+                          >
+                            <Play className="icon" />
+                            Watch
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-container">
-          <div className="cta-content">
-            <h2 className="cta-title">Join Us in Making a Difference</h2>
-            <p className="cta-text">
-              Diabetes is a serious threat, but it is not insurmountable. By
-              partnering with The People's Diabetes Foundation, you can empower
-              individuals, strengthen communities, and help us create a
-              healthier future for Belize.
-            </p>
-            <p className="cta-emphasis">
-              Your donation, no matter the size, will make a significant
-              difference.
-            </p>
-            <Button
-              className="cta-button"
-              onClick={() => window.open(PAYPAL_LINK, '_blank')}
-            >
-              <Heart className="icon" />
-              Donate Now
-              <ExternalLink className="icon" size={18} />
-            </Button>
-            <p className="cta-note">Secure donation via PayPal</p>
+        <section className="section cta-section">
+          <div className="shell cta-layout">
+            <div>
+              <p className="section-kicker">Support</p>
+              <h2 className="section-title">Support the foundation&apos;s education and outreach work.</h2>
+              <p className="section-lead">
+                Donations help support public education materials, family-centered learning,
+                outreach activities, and the resources the foundation shares with people living
+                with diabetes and those who care for them.
+              </p>
+            </div>
+            <div className="cta-actions">
+              <Button
+                className="primary-cta"
+                onClick={() => window.open(PAYPAL_LINK, '_blank', 'noopener,noreferrer')}
+              >
+                <Heart className="icon" />
+                Donate with PayPal
+                <ExternalLink className="icon" />
+              </Button>
+              <p className="cta-note">Secure donation processing through PayPal.</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="footer" id="contact">
-        <div className="footer-content">
-          <div className="footer-section">
-            <img
-              src="https://customer-assets.emergentagent.com/job_fbeb7c05-e739-4d3b-84da-a66045d0dc5c/artifacts/1qk0eawd_IMG_3029.JPG"
-              alt="PDF Logo"
-              className="footer-logo"
-            />
-            <h3 className="footer-title">The People's Diabetes Foundation</h3>
-            <p className="footer-tagline">
-              Creating a healthier future for Belize
+      <footer className="site-footer" id="contact">
+        <div className="shell footer-grid">
+          <div className="footer-brand">
+            <img src={LOGO_URL} alt="The People's Diabetes Foundation logo" className="footer-logo" />
+            <h3>The People&apos;s Diabetes Foundation</h3>
+            <p>
+              A nonprofit organization focused on diabetes awareness, prevention, and education.
             </p>
           </div>
-          <div className="footer-section">
-            <h4 className="footer-heading">Contact Us</h4>
-            <div className="contact-info">
-              <div className="contact-item">
-                <MapPin size={18} />
-                <span>
-                  1725 Ocean Ave. Unit 226
-                  <br />
-                  Santa Monica, CA 90401
-                </span>
+
+          <div>
+            <h4>Contact</h4>
+            <div className="footer-list">
+              <div className="footer-item">
+                <MapPin size={16} />
+                <span>{ADDRESS}</span>
               </div>
-              <div className="contact-item">
-                <Phone size={18} />
-                <a href="tel:323-304-2861">323-304-2861</a>
+              <div className="footer-item">
+                <Phone size={16} />
+                <a href={`tel:${PHONE}`}>{PHONE}</a>
               </div>
-              <div className="contact-item">
-                <Mail size={18} />
-                <a href="mailto:fred@peoplesdiabetesfoundation.org">
-                  fred@peoplesdiabetesfoundation.org
+              <div className="footer-item">
+                <Mail size={16} />
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4>Links</h4>
+            <div className="footer-meta">
+              <p>
+                <a href={WEBSITE_LINK} target="_blank" rel="noopener noreferrer">
+                  Main website
                 </a>
-              </div>
-            </div>
-          </div>
-          <div className="footer-section">
-            <h4 className="footer-heading">Program Contact</h4>
-            <p className="footer-text">
-              <strong>Frederick Flowers</strong>
-            </p>
-            <p className="footer-text">Chief Financial Officer</p>
-            <div className="footer-details">
+              </p>
+              <p>
+                <a href={FACEBOOK_LINK} target="_blank" rel="noopener noreferrer">
+                  Facebook page
+                </a>
+              </p>
+              <p>
+                <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer">
+                  Instagram
+                </a>
+              </p>
               <p>EIN: 47-5249589</p>
-              <p>File: C3834667</p>
             </div>
           </div>
-          <div className="footer-section">
-            <h4 className="footer-heading">Quick Links</h4>
+
+          <div>
+            <h4>Navigate</h4>
             <div className="footer-links">
               <button onClick={() => scrollToSection('about')}>About</button>
-              <button onClick={() => scrollToSection('programs')}>
-                Programs
-              </button>
-              <button onClick={() => scrollToSection('impact')}>Impact</button>
-              <a
-                href="https://www.peoplesdiabetesfoundation.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Our Website
-              </a>
+              <button onClick={() => scrollToSection('resources')}>Resources</button>
+              <button onClick={() => scrollToSection('facebook')}>Facebook</button>
+              <button onClick={() => scrollToSection('media')}>Media</button>
             </div>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>
-            &copy; 2025 The People's Diabetes Foundation. All rights reserved.
-          </p>
-          <p>
-            Together, we can make a difference in the fight against diabetes in
-            Belize.
-          </p>
+
+        <div className="shell footer-bottom">
+          <p>&copy; 2026 The People&apos;s Diabetes Foundation. All rights reserved.</p>
+          <p>Homepage content aligned to the foundation&apos;s public mission, education topics, and contact information.</p>
         </div>
       </footer>
     </div>
